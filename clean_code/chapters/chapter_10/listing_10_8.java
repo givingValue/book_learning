@@ -1,6 +1,6 @@
 package literatePrimes;
 
-import java.utils.ArrayList;
+import java.util.ArrayList;
 
 public class PrimeGenerator {
     private static int[] primes;
