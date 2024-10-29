@@ -1,15 +1,17 @@
 public class Main {
     public static void main(String[] args) {
+        TestCaseResultWriter testCaseResultWriter = new TestCaseConsoleResultWriter();
+        
         TestCase comparisonCompactorTest = new ComparisonCompactorTest();
         comparisonCompactorTest.execute();
-        comparisonCompactorTest.printTestsResults();
+        testCaseResultWriter.writeResults(comparisonCompactorTest);
 
         TestCase comparisonCompactorDefactoredTest = new ComparisonCompactorDefactoredTest();
         comparisonCompactorDefactoredTest.execute();
-        comparisonCompactorDefactoredTest.printTestsResults();
+        testCaseResultWriter.writeResults(comparisonCompactorDefactoredTest);
 
         TestCase comparisonCompactorRefactoredTest = new ComparisonCompactorRefactoredTest();
         comparisonCompactorRefactoredTest.execute();
-        comparisonCompactorRefactoredTest.printTestsResults();
+        testCaseResultWriter.writeResults(comparisonCompactorRefactoredTest);
     }
 }

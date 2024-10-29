@@ -6,11 +6,27 @@ public class TestCase {
     
     private ArrayList<Boolean> testMethodsResults;
     private ArrayList<String> testMethodsNames;
-    private int successfulTests;
 
     public TestCase() {
         testMethodsResults = new ArrayList<Boolean>();
         testMethodsNames = new ArrayList<String>();
+    }
+
+    public ArrayList<Boolean> getTestMethodsResults() {
+        return testMethodsResults;
+    }
+
+    public ArrayList<String> getTestMethodsNames() {
+        return testMethodsNames;
+    }
+
+    public void assertTrue(boolean bValue) {
+        testMethodsResults.add(bValue);
+    }
+
+    public void assertEquals(String expected, String actual) {
+        boolean bValue = expected.equals(actual);
+        testMethodsResults.add(bValue);
     }
 
     public void execute() {
@@ -43,60 +59,5 @@ public class TestCase {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-    }
-
-    public void assertTrue(boolean bValue) {
-        testMethodsResults.add(bValue);
-    }
-
-    public void assertEquals(String expected, String actual) {
-        boolean bValue = expected.equals(actual);
-        testMethodsResults.add(bValue);
-    }
-
-    public void printTestsResults() {
-        printTestsResultsDelimiter();
-        printTestsResultsDetails();
-        printTestsResultsSummary();
-        printTestsResultsDelimiter();
-    }
-
-    private void printTestsResultsDelimiter() {
-        String testObjectClassName = this.getClass().getName();
-        System.out.println();
-        System.out.printf("#################### %s Suite Results ####################\n",
-            testObjectClassName);
-        System.out.println();
-    }
-
-    private void printTestsResultsDetails() {
-        successfulTests = 0;
-        int testNumber;
-        for (int index = 0; index < testMethodsResults.size(); index++) {
-            testNumber = index + 1;
-            if (isSuccessfulTest(index)) {
-                successfulTests++;
-                System.out.printf("[#%d] '%s' test was successful!\n", 
-                    testNumber,
-                    testMethodsNames.get(index));
-            } else {
-                System.out.printf("[#%d] '%s' test was not successful*\n", 
-                    testNumber,
-                    testMethodsNames.get(index));
-            }
-        }
-    }
-
-    private void printTestsResultsSummary() {
-        System.out.println();
-        System.out.println("Test suite Summary:");
-        System.out.printf("* Number of tests: %d.\n", testMethodsResults.size());
-        System.out.printf("* Number of successful tests: %d.\n", successfulTests);
-        System.out.printf("* Success ratio: %.2f%%.\n", 
-            (float)(successfulTests/testMethodsResults.size()*100));
-    }
-
-    private boolean isSuccessfulTest(int index) {
-        return testMethodsResults.get(index);
     }
 }

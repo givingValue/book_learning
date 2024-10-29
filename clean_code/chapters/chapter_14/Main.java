@@ -14,7 +14,6 @@ public class Main {
             System.out.printf("size double parameter value: %f.\n", size);
             System.out.printf("directory string parameter value: %s.\n", directory);
             System.out.printf("words string array parameter value: %s.\n", String.join(",", words));
-            //executeApplication(logging, port, directory);
         } catch (ArgsException e) {
             System.out.printf("Argument error: %s\n", e.errorMessage());
         }

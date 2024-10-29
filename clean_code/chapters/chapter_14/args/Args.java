@@ -68,7 +68,7 @@ public class Args {
         }
     }
 
-    private void parseArgumentCharacter (char argChar) throws ArgsException {
+    private void parseArgumentCharacter(char argChar) throws ArgsException {
         ArgumentMarshaler m = marshalers.get(argChar);
         if (m == null) {
             throw new ArgsException(UNEXPECTED_ARGUMENT, argChar, null);

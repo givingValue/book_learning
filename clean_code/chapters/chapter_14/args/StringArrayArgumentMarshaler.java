@@ -1,4 +1,3 @@
-//listing_14_5
 package args;
 
 import java.util.Iterator;
